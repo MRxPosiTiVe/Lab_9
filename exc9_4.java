@@ -6,6 +6,8 @@ public class exc9_4 {
     public static int some_line(Character[][] array, ArrayList<Integer> lst) {
         int counter = 0;
 
+        System.out.println();
+
         for (int i = 0; i < array.length - 4; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 if (48 <= array[i][j] & array[i][j] <= 57 & 48 <= array[i + 1][j] & array[i + 1][j] <= 57
@@ -27,6 +29,8 @@ public class exc9_4 {
                 }
             }
         }
+        System.out.println();
+
         for (Character[] characters : array) {
             for (int j = 0; j < characters.length - 4; j++) {
                 if (48 <= characters[j] & characters[j] <= 57 & 48 <= characters[j + 1] & characters[j + 1] <= 57
@@ -50,6 +54,7 @@ public class exc9_4 {
                 }
             }
         }
+        System.out.println();
         return counter;
     }
 
@@ -69,6 +74,7 @@ public class exc9_4 {
             }
             System.out.print("\n");
         }
+
         System.out.print("Количество правильных: " + some_line(array, list) + "\nНеправильные:\n");
 
         for (int i = 0; i < list.size() - 3; i += 4) {

@@ -6,10 +6,10 @@ public class exc9_3 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        System.out.println("Введите любую хуйню: ");
+        System.out.println("Введите что-нибудь: ");
         String symbol = input.nextLine();
 
-        System.out.println("Длина массива епта: ");
+        System.out.println("Длина массива: ");
         int len = input.nextInt();
 
         String[] arr = new String[len];
@@ -37,7 +37,7 @@ public class exc9_3 {
         for (String s : arr) {
             if (s.equals(symbol)) sym_count++;
         }
-        System.out.printf("Символов введеных с клавиатуры %d\n", sym_count);
+        System.out.printf("Символов введеных с клавиатуры: %d\n", sym_count);
 
         if (symbol.matches("[0-9]+")) {
             int digit = Integer.parseInt(symbol);
@@ -59,7 +59,7 @@ public class exc9_3 {
         for (int i = 0; i < arr.length - 1; i++) {
             if (arr[i].matches("\\(\\[\\{") && arr[i + 1].matches("\\)\\]\\}")) cout_brackets++;
         }
-        System.out.println(cout_brackets);
+        System.out.printf("Кол-во соседних закрытых скобок: %d\n", cout_brackets);
 
         int space_counter = 0;
 
@@ -71,5 +71,29 @@ public class exc9_3 {
                 break;
             }
         }
+
+        boolean foundSequence = false;
+        for (int i = 0; i < arr.length - 3; i++) {
+            // проверка условий для последовательности
+            if (Character.isDigit(arr[i].charAt(0)) &&
+                    Character.isDigit(arr[i + 1].charAt(0)) &&
+                    Character.isDigit(arr[i + 2].charAt(0))) {
+                int num1 = Integer.parseInt(arr[i]);
+                int num2 = Integer.parseInt(arr[i + 1]);
+                int num3 = Integer.parseInt(arr[i + 2]);
+                if (num1 > num2 && num2 > num3) { // первые две цифры убывающие, последняя возрастающая
+                    foundSequence = true;
+                    break;
+                }
+            }
+        }
+        if (foundSequence) {
+            System.out.println("Существуют такие натуральные i и j, что i<k<j<п и " +
+                    "si, и si+1 убывающая последовательность цифр, a sj и sj+1 возрастающая последовательность цифр.");
+        } else {
+            System.out.println("Не найдено таких натуральных i и j, что i<k<j<п и " +
+                    "si, и si+1 убывающая последовательность цифр, a sj и sj+1 возрастающая последовательность цифр.");
+        }
+
     }
 }
